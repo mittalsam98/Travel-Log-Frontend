@@ -14,10 +14,18 @@ body {
 transform: translate(-50%,-100%);
 }
 
+.error{
+  color:#f05303
+}
 .marker.red path {
   fill: #f05303;
 }
-
+img {
+text-align:center;
+margin-top:10px;
+width:100%;
+display: block;
+}
 .marker.yellow path {
   fill: #f3b73e;
 }

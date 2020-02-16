@@ -1,25 +1,29 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { useForm } from 'react-hook-form'
 import {createLogEntry} from './APIservice';
 
-const LogFormEntry=({location})=>{
-
+const LogFormEntry=({location,onClose})=>{
+    const [loading,setLoading]=useState(false);
+    const [error,setError]=useState('');
     const { register, handleSubmit } = useForm();
 
     const onSubmit= async(data)=>{
-        console.log(data);
         try{
+            setLoading(true)
             data.latitude=location.latitude;
             data.longitude=location.longitude;
             const created= await createLogEntry(data);
-            console.log(created);
+            onClose(); 
         }catch(error){
             console.log(error);
+            setError(error.message)
+            setLoading(false)
         }
 }
 
 return(
     <form onSubmit={handleSubmit(onSubmit)} className='entry-form'>
+        {error?<h3 className='error'>{error}</h3>:null}
         <label htmlFor='title'>Title</label>
         <input name="title" required ref={register} />
         <label htmlFor='comments'>Comments</label>
@@ -29,8 +33,8 @@ return(
         <label htmlFor='image'>Image</label>
         <input name="image" ref={register} />
         <label htmlFor='visiteDate'>Visit Date</label>
-        <input name="visiteDate" type="date" ref={register} /> 
-        <button>Create Travel Log</button>    
+        <input name="visiteDate"  required type="date" ref={register} /> 
+        <button disabled={loading}>{loading?'Loading':'Create Travel Log'}</button>    
     </form>
 )
 }

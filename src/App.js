@@ -25,12 +25,12 @@ const App=()=> {
     })
   // console.log(addEntryLocation)
   }
+    const  getEntry= async ()=>{
+    const fetched= await fetchblogEntry();
+    setLogs(fetched);
+  }
   useEffect(()=>{
-    ( async function (){ 
-      const fetched= await fetchblogEntry();
-      // console.log(fetched);
-      setLogs(fetched);
-      })();
+    getEntry();
   },[])
 
   return (
@@ -43,9 +43,9 @@ const App=()=> {
     >{ 
       logs.map((log)=>{
         return(
-        <>
+        <React.Fragment key={log._id}
+        >
           <Marker 
-           key={log._id}
           latitude={log.latitude} 
           longitude={log.longitude} 
           >
@@ -70,14 +70,16 @@ const App=()=> {
             latitude={log.latitude}
             longitude={log.longitude}
             closeButton={true}
-            closeOnClick={true}
+            closeOnClick={false}
             dynamicPosition={true}
             onClose={() =>setShowPopup({[log._id]:false})}
             anchor="top" >
             <div className='popup'>
               <h3>{log.title}</h3>
-              <p>{log.description}</p>
-          <small>{"Visited on : "+new Date(log.visiteDate).toLocaleDateString()}</small>
+              <h6>{log.description}</h6>
+              <p>{log.comments}</p>
+             <small>{"Visited on : "+new Date(log.visiteDate).toLocaleDateString()}</small>
+             {log.image &&  <img src={log.image} alt={log.title} />}
             </div>
           </Popup>):null
           }
@@ -107,17 +109,20 @@ const App=()=> {
                     latitude={addEntryLocation.latitude}
                     longitude={addEntryLocation.longitude}
                     closeButton={true}
-                    closeOnClick={false}
+                    closeOnClick={true}
                     onClose={() =>setaddEntryLocation(null)}
                     anchor="top" >
                       <div className='popup'>
                         <h3>Add new Entry here</h3>
-                        <LogFormEntry location={addEntryLocation} />
+                        <LogFormEntry onClose={()=>{
+                          setaddEntryLocation(null);
+                          getEntry();
+                        }} location={addEntryLocation} />
                       </div>
               </Popup>
            </> ) : null
           }
-          </>
+          </React.Fragment>
         )
       })
     }
