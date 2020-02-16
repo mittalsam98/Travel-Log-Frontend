@@ -13,6 +13,25 @@ body {
 .marker{
 transform: translate(-50%,-100%);
 }
+
+.marker.red path {
+  fill: #f05303;
+}
+
+.marker.yellow path {
+  fill: #f3b73e;
+}
 .popup{
-  max-width: 300px;
+  width: 30vw; 
+  padding: 1rem;
+}
+
+.entry-form label, 
+.entry-form input, 
+.entry-form textarea, 
+.entry-form button {
+  font-size: 1rem;
+  margin:0.5rem 0;
+  display: block;
+  width:100%;
 }
