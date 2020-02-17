@@ -12,18 +12,20 @@ const LogFormEntry=({location,onClose})=>{
             setLoading(true)
             data.latitude=location.latitude;
             data.longitude=location.longitude;
-            const created= await createLogEntry(data);
+            await createLogEntry(data);
             onClose(); 
         }catch(error){
-            console.log(error);
+            console.log(error.message);
             setError(error.message)
-            setLoading(false)
+            setLoading(false);
         }
 }
 
 return(
     <form onSubmit={handleSubmit(onSubmit)} className='entry-form'>
         {error?<h3 className='error'>{error}</h3>:null}
+        <label htmlFor='password'>Password</label>
+        <input type="password" name="password" required ref={register} />
         <label htmlFor='title'>Title</label>
         <input name="title" required ref={register} />
         <label htmlFor='comments'>Comments</label>

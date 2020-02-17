@@ -109,7 +109,7 @@ const App=()=> {
                     latitude={addEntryLocation.latitude}
                     longitude={addEntryLocation.longitude}
                     closeButton={true}
-                    closeOnClick={true}
+                    closeOnClick={false}
                     onClose={() =>setaddEntryLocation(null)}
                     anchor="top" >
                       <div className='popup'>
