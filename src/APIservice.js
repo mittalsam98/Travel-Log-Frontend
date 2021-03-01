@@ -1,4 +1,4 @@
-const URL='http://localhost:3001/';
+const URL=window.location.hostname==='localhost'  ? 'http://localhost:1337/':'https://travel-log-six.vercel.app/' ;
 
 export async function fetchblogEntry(){
     const response=await fetch(`${URL}api/logs`);
