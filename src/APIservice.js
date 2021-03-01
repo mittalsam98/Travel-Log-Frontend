@@ -17,7 +17,7 @@ export async function createLogEntry(entry){
         },
         body:JSON.stringify(entry),
     });
-    
+      
     const json=await response.json();
     if(response.ok){
         return json;
