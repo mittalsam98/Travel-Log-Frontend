@@ -1,8 +1,8 @@
-A full stack application to store / list places you have traveled.
+# A full stack application to store / list places you have traveled.
 
-Backend Repositary link : https://github.com/mittalsam98/Travel-Log-Api
+### Backend Repositary link : https://github.com/mittalsam98/Travel-Log-Api
 
-Full project is delpoyed here is deployed here :  https://travel-log-frontend-two.vercel.app/.
+### Full project is delpoyed here is deployed here :  https://travel-log-frontend-two.vercel.app/.
 
 
 Some of the Glimpse are :
