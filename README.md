@@ -16,7 +16,7 @@ Some of the Glimpse are :
 
 ###  Credits 
 
- - This is clone from Coding Garden. A huge respect to respect to Coding Garden. 
+ - This is clone from Coding Garden. A huge respect to Coding Garden. 
 
 # buy-me-a-coffee
 Liked some of my work? Buy me a coffee (or more likely a beer)
